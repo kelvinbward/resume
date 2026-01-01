@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('resume.json')
+    // Check if running on localhost
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    // Determine the URL to fetch data from
+    const apiUrl = isLocalhost ? 'http://localhost:5000/api/resume' : 'resume.json';
+
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             renderHeader(data);
