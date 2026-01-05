@@ -3,7 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
     // Determine the URL to fetch data from
-    const apiUrl = isLocalhost ? 'http://localhost:5000/api/resume' : 'resume.json';
+    // Determine the URL to fetch data from
+    // If we are served via Nginx (port 80), /api/resume will be proxied.
+    // If we are standalone file opening, it might fail, but for localhost dev with docker we use /api/resume
+    // For GitHub Pages (hostname ends in .github.io), we use resume.json
+
+    const isGithubPages = window.location.hostname.includes('github.io');
+    const apiUrl = isGithubPages ? 'resume.json' : '/api/resume';
 
     fetch(apiUrl)
         .then(response => response.json())
