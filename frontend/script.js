@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // If we are standalone file opening, it might fail, but for localhost dev with docker we use /api/resume
     // For GitHub Pages (hostname ends in .github.io), we use resume.json
 
-    const isGithubPages = window.location.hostname.includes('github.io' || 'kelvinbward.com');
+    const isGithubPages = window.location.hostname.includes('github.io') || window.location.hostname.includes('kelvinbward.com');
     const apiUrl = isGithubPages ? 'resume.json' : '/api/resume';
 
     fetch(apiUrl)
