@@ -2,6 +2,11 @@
 
 A modern, responsive resume website built with HTML, CSS, and JavaScript, now powered by a **full-stack containerized architecture**.
 
+## 🤖 AI Agent Protocol
+This project uses an **`AGENTS.md`** file to provide context for AI assistants.
+- **Purpose**: Defines technical specs (ports, dependencies) for this specific app.
+- **Relationship**: Connects to the Root `AGENTS.md` in the parent directory for global polyrepo context.
+
 ## 🚀 Live Site
 [View Resume](https://kelvinbward.github.io/resume/) (Static Version)
 
