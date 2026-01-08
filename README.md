@@ -19,33 +19,30 @@ This project has been migrated from a static site to a dynamic application using
 
 ## 📦 Local Development
 
-### Prerequisites
+### prerequisites
 - Docker & Docker Compose
 
-### Getting Started
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/kelvinbward/resume.git
-   cd resume
-   ```
+### 📦 Quick Start (Standalone Mode)
+For visitors who want to run this project locally in full isolation (with its own database):
 
-2. **Create Environment File**:
-   Copy the example environment file:
+1. **Start the Standalone Stack**:
    ```bash
-   cp .env.example .env
+   docker-compose -f docker-compose.standalone.yml up -d --build
    ```
+2. **Access the App**:
+   - Frontend: [http://localhost:80](http://localhost:80)
+   - API: [http://localhost:5000](http://localhost:5000)
 
-3. **Start the Application**:
-   ```bash
-   docker-compose up -d --build
-   ```
-   This will start:
-   - Frontend: http://localhost:80
-   - Backend API: http://localhost:5000 (Internal)
-   - Database: Port 5432
+### 🏗️ Polyrepo Development (Kelvin's Setup)
+This repository is configured by default to run inside my personal **Polyrepo Infrastructure**. 
+- It expects an external network named `web_gateway`.
+- It expects a PostgreSQL instance named `resume-db-1` on that network.
 
-4. **Access the App**:
-   Open [http://localhost:80](http://localhost:80) to view the resume.
+To run in this mode:
+```bash
+docker-compose up -d --build
+```
+*(Note: Will fail if shared infrastructure is not running.)*
 
 ### Managing Data
 - **View Data**: `GET http://localhost:80/api/resume`
