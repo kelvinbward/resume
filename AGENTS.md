@@ -7,12 +7,21 @@ Full-stack application. Depends on `pi-cluster-configs` for DB and Gateway routi
 - **Upstream**: `pi-cluster-configs` (Database, Network).
 - **Downstream**: None.
 
+## 🌳 Relationship: System Root
+This project is a **Service Node** in the `kelvinbward` Polyrepo system.
+- **Root**: `../kelvinbward/AGENTS.md` (Defines global port/network rules)
+- **Infrastructure**: managed by `../pi-cluster-configs` (Provides DB & Gateway)
+
+## 🐳 Docker Modes
+- **Cluster Mode (Default)**: `docker-compose.yml` (No exposed ports, `web_gateway` network). Relies on shared infrastructure.
+- **Standalone Mode (Dev)**: `docker-compose.standalone.yml` (Full stack w/ local DB). Used for isolated dev.
+
 ## 🛠 Local Configuration
 - **Ports**:
-    - Frontend: `3000`
-    - Backend: `3001`
+    - Frontend: `3000` (Standalone)
+    - Backend: `3001` (Standalone)
 - **Commands**:
-    - `docker-compose up`
+    - `docker-compose -f docker-compose.standalone.yml up`
 
 ## 🔄 Protocol
 1.  Update this file if app config changes.
