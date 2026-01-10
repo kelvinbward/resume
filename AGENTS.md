@@ -26,3 +26,4 @@ This project is a **Service Node** in the `kelvinbward` Polyrepo system.
 ## 🔄 Protocol
 1.  Update this file if app config changes.
 2.  Update Root `AGENTS.md` if dependencies change.
+3.  **Auto-Deployment**: This repository is configured to automatically build and push its production assets to the `kelvinbward` Professional Hub on every push to `main`. Ensure `API_TOKEN_GITHUB` secret is active.
