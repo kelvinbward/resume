@@ -1,6 +1,6 @@
-# Kelvin Ward - Resume Website
-
-A modern, responsive resume website built with HTML, CSS, and JavaScript, now powered by a **full-stack containerized architecture**.
+# Kelvin B. Ward - Resume (Hub Component)
+My professional portfolio and full-stack resume application.
+**Deployed as a module of the Hub at [kelvinbward.com/resume/](https://kelvinbward.com/resume/)**.e built with HTML, CSS, and JavaScript, now powered by a **full-stack containerized architecture**.
 
 ## 🤖 AI Agent Protocol
 This project uses an **`AGENTS.md`** file to provide context for AI assistants.
