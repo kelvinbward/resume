@@ -26,11 +26,11 @@ jobs:
       - name: Deploy to Hub
         run: |
           # Create resume directory if it doesn't exist
-          mkdir -p kelvinbward-hub/resume
+          mkdir -p kelvinbward-hub/public/resume
           
           # Copy static frontend assets
           # Excluding Docker/Nginx configs
-          cp -r frontend/*.html frontend/*.css frontend/*.js frontend/*.json kelvinbward-hub/resume/
+          cp -r frontend/*.html frontend/*.css frontend/*.js frontend/*.json kelvinbward-hub/public/resume/
           
           cd kelvinbward-hub
           
@@ -39,7 +39,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           # Commit and Push
-          git add resume/
+          git add public/resume/
           
           # Only commit if there are changes
           if git diff --staged --quiet; then
