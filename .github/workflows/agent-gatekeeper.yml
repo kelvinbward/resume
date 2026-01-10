@@ -1,0 +1,25 @@
+name: Agent Gatekeeper
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Validate Cluster Mode Docker Compose
+        run: docker-compose -f docker-compose.yml config
+
+      - name: Validate Standalone Mode Docker Compose
+        run: docker-compose -f docker-compose.standalone.yml config
+
+      - name: Verify AGENTS.md exists
+        run: |
+          if [ ! -f AGENTS.md ]; then
+            echo "Error: AGENTS.md is missing!"
+            exit 1
+          fi
+          echo "AGENTS.md exists."
