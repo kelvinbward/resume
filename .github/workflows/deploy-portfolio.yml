@@ -16,18 +16,6 @@ jobs:
       - name: Checkout Resume
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
       - name: Checkout Professional Hub
         uses: actions/checkout@v4
         with:
@@ -40,12 +28,9 @@ jobs:
           # Create resume directory if it doesn't exist
           mkdir -p kelvinbward-hub/resume
           
-          # Clean old files (optional, but good for removing deleted assets)
-          # Be careful not to delete the .git folder if navigating incorrectly
-          # standard practice: rm -rf kelvinbward-hub/resume/* 
-          
-          # Copy new build artifacts
-          cp -r dist/* kelvinbward-hub/resume/
+          # Copy static frontend assets
+          # Excluding Docker/Nginx configs
+          cp -r frontend/*.html frontend/*.css frontend/*.js frontend/*.json kelvinbward-hub/resume/
           
           cd kelvinbward-hub
           
