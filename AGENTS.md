@@ -18,8 +18,8 @@ This project is a **Service Node** in the `kelvinbward` Polyrepo system.
 
 ## 🛠 Local Configuration
 - **Ports**:
-    - Frontend: `3000` (Standalone)
-    - Backend: `3001` (Standalone)
+    - Frontend: `80` (Standalone)
+    - Backend: `5000` (Standalone)
 - **Commands**:
     - `docker-compose -f docker-compose.standalone.yml up`
 
