@@ -47,8 +47,6 @@ const formatResume = (row) => {
         name: row.name,
         title: row.title,
         contact: {
-            email: row.email,
-            phone: row.phone,
             location: row.location
         },
         objective: row.objective,
