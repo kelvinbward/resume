@@ -32,19 +32,16 @@ jobs:
           # Excluding Docker/Nginx configs
           cp -r frontend/*.html frontend/*.css frontend/*.js frontend/*.json kelvinbward-hub/public/resume/
           
-          cd kelvinbward-hub
-          
-          # Configure Git
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Commit and Push
-          git add public/resume/
-          
-          # Only commit if there are changes
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "deploy: update resume module from kelvinbward/resume@${{ github.sha }}"
-            git push
-          fi
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          path: kelvinbward-hub
+          commit-message: "deploy: update resume module from kelvinbward/resume@${{ github.sha }}"
+          branch: "deploy/resume-update"
+          delete-branch: true
+          title: "Deploy: Update Resume Module"
+          body: |
+            Automated update from `kelvinbward/resume`.
+            Source Commit: `kelvinbward/resume@${{ github.sha }}`
+          base: main
