@@ -20,7 +20,7 @@
 
 ## 🔄 Handoff Protocol
 1.  **Migration**: Schema changes require `init.sql` update.
-2.  **Deploy**: Pushing to `main` triggers PR to `kelvinbward`.
+2.  **Workflow**: Push to `feature/` branch. Create PR to `main`.
 
 ## 🤝 Collaborative Workflow
 - **Branching**: `feature/` (Resume data/UI).
