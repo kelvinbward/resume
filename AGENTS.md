@@ -1,26 +1,26 @@
-# 🧠 Service: Resume
+# 🧠 Service: Resume Spoke
 
 ## 📋 Service Role
-Full-stack application (Node.js/PostgreSQL) serving the professional portfolio.
+**Professional Data Source**.
+- **Target Hub**: `kelvinbward`
+- **Stack**: React (Frontend) + Node.js (Backend) + PostgreSQL.
 
 ## 📡 Service Topology
 | Context | Hostname | Port | Visibility |
 | :--- | :--- | :--- | :--- |
-| **Cluster (Frontend)** | `resume-frontend-1` | `80` | Public (Gateway routed) |
-| **Cluster (Backend)** | `resume-backend-1` | `3000` | Internal |
-| **Cluster (DB)** | `resume-db-1` | `5432` | Private |
-| **Standalone** | `localhost` | `8080` (Web) / `3000` (API) | Public (Dev Mode) |
+| **API** | `resume-backend-1` | `3000` | Internal |
+| **Frontend** | `resume-frontend-1` | `80` | Internal |
+| **DB** | `resume-db-1` | `5432` | Private |
 
 ## 🚀 Execution Modes
-- **Cluster**: `docker compose up` (Managed by `pi-cluster-configs`).
-- **Standalone**: `docker compose -f docker-compose.standalone.yml up` (Includes local DB).
+| Mode | Config | Command | Description |
+| :--- | :--- | :--- | :--- |
+| **Cluster** | `docker-compose.yml` | `docker compose up -d` | Prod. Connects to shared DB. |
+| **Standalone** | `docker-compose.standalone.yml` | `docker compose -f ... up` | **Port 8080**. Isolated mock DB. |
 
 ## 🔄 Handoff Protocol
-1.  **Session Log**: Create entry in `pi-cluster-configs/logs/sessions/`.
-2.  **State Sync**: Update `pi-cluster-configs/STATE.md` if dependencies change.
-3.  **Cleanup**: Run `../kelvinbward/scripts/git_cleanup.sh` before new tasks.
+1.  **Migration**: Schema changes require `init.sql` update.
+2.  **Deploy**: Pushing to `main` triggers PR to `kelvinbward`.
 
 ## 🤝 Collaborative Workflow
-- **Branching**: `feature/`, `fix/`, `infra/`.
-- **Review**: Generate Direct Link for User PR creation.
-- **Secrets**: NEVER commit. Use `secrets.env` template.
+- **Branching**: `feature/` (Resume data/UI).
